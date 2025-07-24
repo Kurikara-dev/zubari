@@ -36,6 +36,7 @@ export async function getAuthContext(request: NextRequest): Promise<AuthContext>
   const sessionCookie = request.cookies.get('auth0_session')
   
   if (!sessionCookie) {
+    console.error('No auth0_session cookie found')
     return {
       user: null as unknown as AuthUser,
       isAuthenticated: false
@@ -46,6 +47,7 @@ export async function getAuthContext(request: NextRequest): Promise<AuthContext>
     const session = JSON.parse(sessionCookie.value)
     
     if (!session.user) {
+      console.error('No user in session:', session)
       return {
         user: null as unknown as AuthUser,
         isAuthenticated: false
