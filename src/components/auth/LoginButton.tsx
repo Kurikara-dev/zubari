@@ -1,9 +1,30 @@
 'use client';
 
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useState, useEffect } from 'react';
+
+interface User {
+  name?: string;
+  email?: string;
+  picture?: string;
+}
 
 export default function LoginButton() {
-  const { user, isLoading } = useUser();
+  const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // ユーザー情報を取得
+    fetch('/api/auth/me')
+      .then(res => res.json())
+      .then(data => {
+        setUser(data.user);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setUser(null);
+        setIsLoading(false);
+      });
+  }, []);
 
   if (isLoading) return <div>Loading...</div>;
 

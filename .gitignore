@@ -80,3 +80,10 @@ build/
 # Temporary files
 tmp/
 temp/
+
+# other
+.gitignore
+docs/
+.claude/
+debug/
+doc/
