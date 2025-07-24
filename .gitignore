@@ -85,3 +85,5 @@ temp/
 .claude/
 debug/
 doc/
+dependency/
+dev-log/

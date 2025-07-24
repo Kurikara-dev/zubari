@@ -2,18 +2,34 @@
   "name": "zubari",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack --port 3005 --hostname 0.0.0.0",
-    "build": "next build",
+    "dev": "npm run health:quick && next dev --turbopack --port 3005 --hostname 0.0.0.0",
+    "build": "npm run health:full && next build",
     "start": "next start --port 3005",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "quality-check": "npm run lint && npm run test",
+    "deps:analyze": "node scripts/analyze-dependencies.js",
+    "deps:monitor": "node scripts/dependency-monitor.js",
+    "deps:validate": "node scripts/build-validator.js",
+    "deps:query": "node scripts/dependency-query.js",
+    "debt:analyze": "node scripts/technical-debt-analyzer.js",
+    "architecture:check": "npm run deps:analyze && npm run debt:analyze && npm run deps:validate",
+    "architecture:monitor": "npm run deps:monitor",
+    "health:quick": "node scripts/health-check.js --quick",
+    "health:full": "node scripts/health-check.js --full",
+    "health:alert": "node scripts/health-check.js --alert"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^4.8.0",
     "@supabase/supabase-js": "^2.52.1",
+    "@tanstack/react-query": "^5.83.0",
+    "date-fns": "^4.1.0",
     "next": "15.4.3",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "use-debounce": "^10.0.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
