@@ -1,4 +1,4 @@
-import { supabase } from '../supabase'
+import { supabaseAdmin } from '../supabase'
 import { 
   Project, 
   ProjectInsert, 
@@ -29,7 +29,11 @@ export class ProjectService {
       owner_id: user.sub
     }
 
-    const { data, error } = await supabase
+    if (!supabaseAdmin) {
+      throw new Error('Server-side Supabase client is not configured')
+    }
+
+    const { data, error } = await supabaseAdmin
       .from('projects')
       .insert(projectData)
       .select()
@@ -55,7 +59,11 @@ export class ProjectService {
       limit?: number
     }
   ): Promise<{ data: Project[]; total: number }> {
-    let query = supabase
+    if (!supabaseAdmin) {
+      throw new Error('Server-side Supabase client is not configured')
+    }
+
+    let query = supabaseAdmin
       .from('projects')
       .select('*', { count: 'exact' })
       .eq('owner_id', user.sub)
@@ -105,7 +113,11 @@ export class ProjectService {
       throw new Error('Project ID is required')
     }
 
-    const { data, error } = await supabase
+    if (!supabaseAdmin) {
+      throw new Error('Server-side Supabase client is not configured')
+    }
+
+    const { data, error } = await supabaseAdmin
       .from('projects')
       .select('*')
       .eq('id', projectId)
@@ -164,7 +176,11 @@ export class ProjectService {
 
     updateData.updated_at = new Date().toISOString()
 
-    const { data, error } = await supabase
+    if (!supabaseAdmin) {
+      throw new Error('Server-side Supabase client is not configured')
+    }
+
+    const { data, error } = await supabaseAdmin
       .from('projects')
       .update(updateData)
       .eq('id', projectId)
@@ -193,7 +209,11 @@ export class ProjectService {
       throw new Error('Project not found')
     }
 
-    const { error } = await supabase
+    if (!supabaseAdmin) {
+      throw new Error('Server-side Supabase client is not configured')
+    }
+
+    const { error } = await supabaseAdmin
       .from('projects')
       .delete()
       .eq('id', projectId)

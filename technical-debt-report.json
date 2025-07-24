@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-07-24T08:08:23.555Z",
+  "timestamp": "2025-07-24T08:25:20.697Z",
   "summary": {
     "overallScore": 49,
     "totalFiles": 10,
@@ -11,16 +11,16 @@
     {
       "file": "lib/supabase.ts",
       "metrics": {
-        "complexity": 1,
+        "complexity": 4,
         "complexityScore": 100,
-        "maintainability": 75,
+        "maintainability": 92,
         "testCoverage": 0,
         "documentation": 25,
         "dependencyComplexity": 100,
         "codeSmells": 0,
         "codeSmellScore": 100
       },
-      "totalScore": 63,
+      "totalScore": 67,
       "issues": [],
       "priority": "low"
     },
@@ -169,7 +169,7 @@
     {
       "file": "lib/api/projects.ts",
       "metrics": {
-        "complexity": 70,
+        "complexity": 75,
         "complexityScore": 25,
         "maintainability": 50,
         "testCoverage": 0,
@@ -180,7 +180,7 @@
       },
       "totalScore": 39,
       "issues": [
-        "Duplicate lines: 18"
+        "Duplicate lines: 20"
       ],
       "priority": "high"
     }
