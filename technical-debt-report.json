@@ -1,10 +1,10 @@
 {
-  "timestamp": "2025-07-24T08:25:20.697Z",
+  "timestamp": "2025-07-24T09:59:53.021Z",
   "summary": {
     "overallScore": 49,
-    "totalFiles": 10,
+    "totalFiles": 11,
     "highPriorityIssues": 1,
-    "mediumPriorityIssues": 8,
+    "mediumPriorityIssues": 9,
     "lowPriorityIssues": 1
   },
   "files": [
@@ -37,6 +37,22 @@
         "codeSmellScore": 100
       },
       "totalScore": 58,
+      "issues": [],
+      "priority": "medium"
+    },
+    {
+      "file": "app/api/test-db/route.ts",
+      "metrics": {
+        "complexity": 16,
+        "complexityScore": 50,
+        "maintainability": 75,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 0,
+        "codeSmellScore": 100
+      },
+      "totalScore": 53,
       "issues": [],
       "priority": "medium"
     },
