@@ -3,8 +3,9 @@ import { NextRequest, NextResponse } from 'next/server';
 // Auth0の基本的な認証ハンドラー
 export async function GET(
   request: NextRequest,
-  { params }: { params: { auth0: string } }
+  context: { params: Promise<{ auth0: string }> }
 ) {
+  const params = await context.params;
   const auth0Action = params.auth0;
 
   switch (auth0Action) {

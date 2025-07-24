@@ -5,7 +5,7 @@ import { supabase } from '@/lib/supabase';
 
 export default function TestPage() {
   const [connectionStatus, setConnectionStatus] = useState<string>('Testing...');
-  const [tables, setTables] = useState<unknown[]>([]);
+  // const [tables, setTables] = useState<unknown[]>([]);
 
   useEffect(() => {
     testConnection();
@@ -14,7 +14,7 @@ export default function TestPage() {
   const testConnection = async () => {
     try {
       // Test basic connection
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('users')
         .select('count', { count: 'exact', head: true });
 
@@ -22,7 +22,7 @@ export default function TestPage() {
         setConnectionStatus(`Error: ${error.message}`);
       } else {
         setConnectionStatus('✅ Supabase connection successful!');
-        setTables([]); // テーブル情報は後で実装
+        // setTables([]); // テーブル情報は後で実装
       }
     } catch (err) {
       setConnectionStatus(`❌ Connection failed: ${err}`);
