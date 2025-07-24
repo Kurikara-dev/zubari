@@ -15,7 +15,7 @@ export default function ProjectCreateForm() {
         description: data.description || undefined
       })
       
-      router.push(`/projects/${project.id}`)
+      router.push('/projects')
     } catch (error) {
       throw error
     }

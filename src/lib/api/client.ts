@@ -24,6 +24,11 @@ async function fetchApi<T>(
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}))
+      console.error('API Error:', {
+        status: response.status,
+        statusText: response.statusText,
+        errorData
+      })
       throw new ApiError(
         errorData.error || `HTTP ${response.status}: ${response.statusText}`,
         response.status
