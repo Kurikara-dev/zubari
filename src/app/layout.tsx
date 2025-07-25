@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import QueryProvider from "@/components/providers/QueryProvider";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
+import Header from "@/components/layout/Header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Zubari - Visual Construction Communication",
+  title: "markitto - Visual Construction Communication",
   description: "Pin-based visual communication tool for construction teams",
   viewport: {
     width: "device-width",
@@ -37,6 +38,7 @@ export default function RootLayout({
       >
         <ServiceWorkerRegistration />
         <QueryProvider>
+          <Header />
           {children}
         </QueryProvider>
       </body>
