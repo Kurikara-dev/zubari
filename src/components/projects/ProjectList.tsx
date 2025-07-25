@@ -56,10 +56,10 @@ export default function ProjectList() {
     return (
       <div>
         <ProjectFilters />
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 grid-cols-2 sm:gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
           {Array.from({ length: 6 }).map((_, index) => (
             <div key={index} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden animate-pulse">
-              <div className="p-6">
+              <div className="p-4 sm:p-5 md:p-6">
                 <div className="h-6 bg-gray-200 rounded-md mb-4 w-3/4"></div>
                 <div className="h-4 bg-gray-200 rounded-md mb-2 w-full"></div>
                 <div className="h-4 bg-gray-200 rounded-md mb-4 w-2/3"></div>
@@ -88,7 +88,7 @@ export default function ProjectList() {
           <p className="text-gray-600 mb-4">プロジェクトの読み込みに失敗しました</p>
           <button
             onClick={() => refetch()}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200"
+            className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium py-3 sm:py-2 px-4 rounded-md transition duration-200 touch-target touch-button"
           >
             再試行
           </button>
@@ -117,7 +117,7 @@ export default function ProjectList() {
           {!hasFilters && (
             <a
               href="/projects/new"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition duration-200 inline-block"
+              className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium py-3 sm:py-2 px-4 rounded-md transition duration-200 inline-block touch-target touch-button"
             >
               プロジェクト作成
             </a>
@@ -131,7 +131,7 @@ export default function ProjectList() {
             {total}件のプロジェクトが見つかりました
           </div>
           
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-6">
+          <div className="grid gap-4 grid-cols-2 sm:gap-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 mb-6">
             {projects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}

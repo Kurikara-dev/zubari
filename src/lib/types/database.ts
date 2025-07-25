@@ -61,6 +61,38 @@ export interface Database {
           updated_at?: string
         }
       }
+      media: {
+        Row: {
+          id: string
+          project_id: string
+          file_name: string
+          file_path: string
+          file_size: number
+          mime_type: string
+          uploaded_by: string
+          uploaded_at: string
+        }
+        Insert: {
+          id?: string
+          project_id: string
+          file_name: string
+          file_path: string
+          file_size: number
+          mime_type: string
+          uploaded_by: string
+          uploaded_at?: string
+        }
+        Update: {
+          id?: string
+          project_id?: string
+          file_name?: string
+          file_path?: string
+          file_size?: number
+          mime_type?: string
+          uploaded_by?: string
+          uploaded_at?: string
+        }
+      }
     }
     Views: {
       [_ in never]: never

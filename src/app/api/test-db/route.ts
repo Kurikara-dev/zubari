@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
       }
 
       // Test 2: Try to query projects table
-      const { data, error, count } = await supabaseAdmin
+      const { error, count } = await supabaseAdmin
         .from('projects')
         .select('*', { count: 'exact' })
         .eq('owner_id', authRequest.user.sub)

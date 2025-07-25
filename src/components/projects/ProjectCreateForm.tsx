@@ -10,7 +10,7 @@ export default function ProjectCreateForm() {
 
   const handleSubmit = async (data: ProjectFormData) => {
     try {
-      const project = await projectApi.create({
+      await projectApi.create({
         name: data.name,
         description: data.description || undefined
       })

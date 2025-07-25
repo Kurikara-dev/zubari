@@ -1,0 +1,198 @@
+import React from 'react'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import ImageUploadZone from '../ImageUploadZone'
+import { ALLOWED_MIME_TYPES, MAX_FILE_SIZE } from '@/lib/types/media'
+
+const mockOnFileSelect = jest.fn()
+
+const createMockFile = (name: string, size: number, type: string): File => {
+  const file = new File(['test content'], name, { type })
+  Object.defineProperty(file, 'size', { value: size })
+  return file
+}
+
+describe('ImageUploadZone', () => {
+  beforeEach(() => {
+    mockOnFileSelect.mockClear()
+  })
+
+  describe('基本的なレンダリング', () => {
+    test('デフォルトのプレースホルダーが表示される', () => {
+      render(<ImageUploadZone onFileSelect={mockOnFileSelect} />)
+      
+      expect(screen.getByText('画像をドラッグ&ドロップ、またはクリックして選択')).toBeInTheDocument()
+    })
+
+    test('カスタムプレースホルダーが表示される', () => {
+      const customPlaceholder = 'カスタムメッセージ'
+      render(
+        <ImageUploadZone 
+          onFileSelect={mockOnFileSelect} 
+          placeholder={customPlaceholder} 
+        />
+      )
+      
+      expect(screen.getByText(customPlaceholder)).toBeInTheDocument()
+    })
+
+    test('ファイル形式と最大サイズが表示される', () => {
+      render(<ImageUploadZone onFileSelect={mockOnFileSelect} />)
+      
+      expect(screen.getByText(/image\/jpeg, image\/png, image\/webp/)).toBeInTheDocument()
+      expect(screen.getByText(/最大 10MB/)).toBeInTheDocument()
+    })
+  })
+
+  describe('ファイル選択機能', () => {
+    test('有効なファイルが選択された時、onFileSelectが呼ばれる', async () => {
+      render(<ImageUploadZone onFileSelect={mockOnFileSelect} />)
+      
+      const input = screen.getByRole('button', { name: '画像ファイルをアップロード' })
+      const hiddenInput = document.querySelector('input[type="file"]') as HTMLInputElement
+      
+      const validFile = createMockFile('test.jpg', 1024, 'image/jpeg')
+      
+      await userEvent.upload(hiddenInput, validFile)
+      
+      await waitFor(() => {
+        expect(mockOnFileSelect).toHaveBeenCalledWith(validFile)
+      })
+    })
+
+    test('無効なファイル形式の場合、エラーが表示される', async () => {
+      render(<ImageUploadZone onFileSelect={mockOnFileSelect} />)
+      
+      const hiddenInput = document.querySelector('input[type="file"]') as HTMLInputElement
+      const invalidFile = createMockFile('test.txt', 1024, 'text/plain')
+      
+      await userEvent.upload(hiddenInput, invalidFile)
+      
+      await waitFor(() => {
+        expect(screen.getByText(/サポートされていないファイル形式です/)).toBeInTheDocument()
+        expect(mockOnFileSelect).toHaveBeenCalledWith(null)
+      })
+    })
+
+    test('ファイルサイズが大きすぎる場合、エラーが表示される', async () => {
+      render(<ImageUploadZone onFileSelect={mockOnFileSelect} />)
+      
+      const hiddenInput = document.querySelector('input[type="file"]') as HTMLInputElement
+      const largeFile = createMockFile('large.jpg', MAX_FILE_SIZE + 1, 'image/jpeg')
+      
+      await userEvent.upload(hiddenInput, largeFile)
+      
+      await waitFor(() => {
+        expect(screen.getByText(/ファイルサイズが大きすぎます/)).toBeInTheDocument()
+        expect(mockOnFileSelect).toHaveBeenCalledWith(null)
+      })
+    })
+  })
+
+  describe('ドラッグ&ドロップ機能', () => {
+    test('ファイルがドロップされた時、onFileSelectが呼ばれる', async () => {
+      render(<ImageUploadZone onFileSelect={mockOnFileSelect} />)
+      
+      const dropZone = screen.getByRole('button', { name: '画像ファイルをアップロード' })
+      const validFile = createMockFile('dropped.png', 1024, 'image/png')
+      
+      const dropEvent = new Event('drop', { bubbles: true })
+      Object.defineProperty(dropEvent, 'dataTransfer', {
+        value: {
+          files: [validFile]
+        }
+      })
+      
+      fireEvent(dropZone, dropEvent)
+      
+      await waitFor(() => {
+        expect(mockOnFileSelect).toHaveBeenCalledWith(validFile)
+      })
+    })
+
+    test('ドラッグオーバー時に視覚的フィードバックが表示される', () => {
+      render(<ImageUploadZone onFileSelect={mockOnFileSelect} />)
+      
+      const dropZone = screen.getByRole('button', { name: '画像ファイルをアップロード' })
+      
+      fireEvent.dragOver(dropZone)
+      
+      expect(dropZone).toHaveClass('border-blue-500', 'bg-blue-50')
+    })
+
+    test('ドラッグリーブ時に視覚的フィードバックが削除される', () => {
+      render(<ImageUploadZone onFileSelect={mockOnFileSelect} />)
+      
+      const dropZone = screen.getByRole('button', { name: '画像ファイルをアップロード' })
+      
+      fireEvent.dragOver(dropZone)
+      fireEvent.dragLeave(dropZone)
+      
+      expect(dropZone).not.toHaveClass('border-blue-500', 'bg-blue-50')
+    })
+  })
+
+  describe('ファイル情報表示', () => {
+    test('選択されたファイルの情報が表示される', async () => {
+      render(<ImageUploadZone onFileSelect={mockOnFileSelect} />)
+      
+      const hiddenInput = document.querySelector('input[type="file"]') as HTMLInputElement
+      const validFile = createMockFile('test-image.jpg', 2048, 'image/jpeg')
+      
+      await userEvent.upload(hiddenInput, validFile)
+      
+      await waitFor(() => {
+        expect(screen.getByText('test-image.jpg')).toBeInTheDocument()
+        expect(screen.getByText('2 KB • image/jpeg')).toBeInTheDocument()
+      })
+    })
+
+    test('ファイル削除ボタンが機能する', async () => {
+      render(<ImageUploadZone onFileSelect={mockOnFileSelect} />)
+      
+      const hiddenInput = document.querySelector('input[type="file"]') as HTMLInputElement
+      const validFile = createMockFile('test.jpg', 1024, 'image/jpeg')
+      
+      await userEvent.upload(hiddenInput, validFile)
+      
+      await waitFor(() => {
+        expect(screen.getByText('test.jpg')).toBeInTheDocument()
+      })
+      
+      const deleteButton = screen.getByText('削除')
+      await userEvent.click(deleteButton)
+      
+      await waitFor(() => {
+        expect(screen.queryByText('test.jpg')).not.toBeInTheDocument()
+        expect(mockOnFileSelect).toHaveBeenCalledWith(null)
+      })
+    })
+  })
+
+  describe('無効化状態', () => {
+    test('disabled状態の時、ファイル選択が無効化される', () => {
+      render(<ImageUploadZone onFileSelect={mockOnFileSelect} disabled={true} />)
+      
+      const dropZone = screen.getByRole('button', { name: '画像ファイルをアップロード' })
+      const hiddenInput = document.querySelector('input[type="file"]') as HTMLInputElement
+      
+      expect(dropZone).toHaveClass('opacity-50', 'cursor-not-allowed')
+      expect(hiddenInput).toBeDisabled()
+    })
+  })
+
+  describe('エラー表示', () => {
+    test('外部エラーが表示される', () => {
+      const externalError = '外部エラーメッセージ'
+      render(
+        <ImageUploadZone 
+          onFileSelect={mockOnFileSelect} 
+          error={externalError} 
+        />
+      )
+      
+      expect(screen.getByText(externalError)).toBeInTheDocument()
+      expect(screen.getByRole('alert')).toHaveTextContent(externalError)
+    })
+  })
+})

@@ -9,6 +9,8 @@
     "start": "next start --port 3005",
     "lint": "next lint",
     "format": "prettier --write .",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
     "quality-check": "npm run lint && npm run test",
     "deps:analyze": "node scripts/analyze-dependencies.js",
     "deps:monitor": "node scripts/dependency-monitor.js",
@@ -19,13 +21,18 @@
     "architecture:monitor": "npm run deps:monitor",
     "health:quick": "node scripts/health-check.js --quick",
     "health:full": "node scripts/health-check.js --full",
-    "health:alert": "node scripts/health-check.js --alert"
+    "health:alert": "node scripts/health-check.js --alert",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^4.8.0",
     "@supabase/supabase-js": "^2.52.1",
     "@tanstack/react-query": "^5.83.0",
+    "@types/lodash": "^4.17.20",
     "date-fns": "^4.1.0",
+    "lodash": "^4.17.21",
     "next": "15.4.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -33,14 +40,24 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@next/bundle-analyzer": "^15.4.3",
+    "@playwright/test": "^1.54.1",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.7.0",
+    "critters": "^0.0.23",
     "eslint": "^9",
     "eslint-config-next": "15.4.3",
+    "intersection-observer": "^0.12.2",
+    "jsdom": "^26.1.0",
     "pg": "^8.16.3",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^3.2.4",
+    "workbox-webpack-plugin": "^7.3.0"
   }
 }

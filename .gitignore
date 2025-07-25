@@ -87,3 +87,8 @@ debug/
 doc/
 dependency/
 dev-log/
+e2e/
+playwright-report/
+public/
+test-results/
+CLAUDE.md

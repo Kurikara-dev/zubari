@@ -47,25 +47,25 @@ export default function ProjectActions({ project }: ProjectActionsProps) {
 
   return (
     <>
-      <div className="flex items-center space-x-2">
+      <div className="flex items-center space-x-1 sm:space-x-2">
         <a
           href={`/projects/${project.id}`}
-          className="text-blue-600 hover:text-blue-700 text-sm font-medium transition duration-200"
+          className="text-blue-600 hover:text-blue-700 active:text-blue-800 text-sm font-medium transition duration-200 touch-target px-2 py-1 rounded"
         >
           詳細
         </a>
-        <span className="text-gray-300">|</span>
+        <span className="text-gray-300 hidden sm:inline">|</span>
         <a
           href={`/projects/${project.id}/edit`}
-          className="text-green-600 hover:text-green-700 text-sm font-medium transition duration-200"
+          className="text-green-600 hover:text-green-700 active:text-green-800 text-sm font-medium transition duration-200 touch-target px-2 py-1 rounded"
         >
           編集
         </a>
-        <span className="text-gray-300">|</span>
+        <span className="text-gray-300 hidden sm:inline">|</span>
         <button
           type="button"
           onClick={() => setShowDeleteDialog(true)}
-          className="text-red-600 hover:text-red-700 text-sm font-medium transition duration-200"
+          className="text-red-600 hover:text-red-700 active:text-red-800 text-sm font-medium transition duration-200 touch-target px-2 py-1 rounded touch-button"
           disabled={deleteMutation.isPending}
         >
           削除
@@ -75,7 +75,7 @@ export default function ProjectActions({ project }: ProjectActionsProps) {
       {/* Delete Confirmation Dialog */}
       {showDeleteDialog && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center">
-          <div className="relative p-6 bg-white rounded-lg shadow-xl max-w-md w-full mx-4">
+          <div className="relative p-4 sm:p-6 bg-white rounded-lg shadow-xl max-w-md w-full mx-4">
             <div className="mb-4">
               <div className="flex items-center mb-4">
                 <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mr-3">
@@ -94,12 +94,12 @@ export default function ProjectActions({ project }: ProjectActionsProps) {
               </p>
             </div>
 
-            <div className="flex space-x-3 justify-end">
+            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 justify-end">
               <button
                 type="button"
                 onClick={() => setShowDeleteDialog(false)}
                 disabled={deleteMutation.isPending}
-                className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+                className="px-4 py-3 sm:py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 active:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 touch-target touch-button"
               >
                 キャンセル
               </button>
@@ -107,7 +107,7 @@ export default function ProjectActions({ project }: ProjectActionsProps) {
                 type="button"
                 onClick={handleDelete}
                 disabled={deleteMutation.isPending}
-                className="px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 flex items-center"
+                className="px-4 py-3 sm:py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md hover:bg-red-700 active:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 flex items-center justify-center touch-target touch-button"
               >
                 {deleteMutation.isPending && (
                   <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">

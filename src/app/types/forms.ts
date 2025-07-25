@@ -31,3 +31,31 @@ export interface FormFieldProps {
   placeholder?: string
   rows?: number
 }
+
+export interface ImageUploadZoneProps {
+  onFileSelect: (file: File | null) => void
+  acceptedTypes?: string[]
+  maxSize?: number
+  disabled?: boolean
+  error?: string
+  placeholder?: string
+}
+
+export interface FilePreviewProps {
+  file: File | null
+  previewUrl?: string | null
+  onRemove?: () => void
+  disabled?: boolean
+  showSize?: boolean
+  showType?: boolean
+}
+
+export interface UploadProgressProps {
+  progress: number
+  status: 'idle' | 'uploading' | 'success' | 'error'
+  fileName?: string
+  errorMessage?: string
+  onCancel?: () => void
+  showPercentage?: boolean
+  size?: 'small' | 'medium' | 'large'
+}

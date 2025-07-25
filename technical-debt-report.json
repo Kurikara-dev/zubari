@@ -1,11 +1,11 @@
 {
-  "timestamp": "2025-07-24T09:59:53.021Z",
+  "timestamp": "2025-07-25T00:03:22.593Z",
   "summary": {
     "overallScore": 49,
-    "totalFiles": 11,
-    "highPriorityIssues": 1,
-    "mediumPriorityIssues": 9,
-    "lowPriorityIssues": 1
+    "totalFiles": 42,
+    "highPriorityIssues": 3,
+    "mediumPriorityIssues": 34,
+    "lowPriorityIssues": 5
   },
   "files": [
     {
@@ -25,9 +25,81 @@
       "priority": "low"
     },
     {
-      "file": "app/types/forms.ts",
+      "file": "lib/services/thumbnailService.ts",
       "metrics": {
-        "complexity": 9,
+        "complexity": 74,
+        "complexityScore": 25,
+        "maintainability": 67,
+        "testCoverage": 75,
+        "documentation": 75,
+        "dependencyComplexity": 100,
+        "codeSmells": 2,
+        "codeSmellScore": 75
+      },
+      "totalScore": 65,
+      "issues": [
+        "Duplicate lines: 12",
+        "Magic numbers: 9"
+      ],
+      "priority": "low"
+    },
+    {
+      "file": "app/api/media/thumbnail/route.ts",
+      "metrics": {
+        "complexity": 96,
+        "complexityScore": 25,
+        "maintainability": 67,
+        "testCoverage": 100,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 2,
+        "codeSmellScore": 75
+      },
+      "totalScore": 63,
+      "issues": [
+        "Duplicate lines: 27",
+        "Magic numbers: 32"
+      ],
+      "priority": "low"
+    },
+    {
+      "file": "components/media/index.ts",
+      "metrics": {
+        "complexity": 1,
+        "complexityScore": 100,
+        "maintainability": 75,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 0,
+        "codeSmellScore": 100
+      },
+      "totalScore": 63,
+      "issues": [],
+      "priority": "low"
+    },
+    {
+      "file": "lib/hooks/useLazyLoading.ts",
+      "metrics": {
+        "complexity": 80,
+        "complexityScore": 25,
+        "maintainability": 75,
+        "testCoverage": 75,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 1,
+        "codeSmellScore": 75
+      },
+      "totalScore": 60,
+      "issues": [
+        "Duplicate lines: 6"
+      ],
+      "priority": "low"
+    },
+    {
+      "file": "lib/types/media.ts",
+      "metrics": {
+        "complexity": 6,
         "complexityScore": 75,
         "maintainability": 75,
         "testCoverage": 0,
@@ -38,6 +110,44 @@
       },
       "totalScore": 58,
       "issues": [],
+      "priority": "medium"
+    },
+    {
+      "file": "lib/hooks/useGestureRecognition.ts",
+      "metrics": {
+        "complexity": 72,
+        "complexityScore": 25,
+        "maintainability": 58,
+        "testCoverage": 75,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 2,
+        "codeSmellScore": 75
+      },
+      "totalScore": 56,
+      "issues": [
+        "Duplicate lines: 16",
+        "Magic numbers: 9"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "lib/utils/imageFormats.ts",
+      "metrics": {
+        "complexity": 69,
+        "complexityScore": 25,
+        "maintainability": 75,
+        "testCoverage": 0,
+        "documentation": 100,
+        "dependencyComplexity": 100,
+        "codeSmells": 2,
+        "codeSmellScore": 75
+      },
+      "totalScore": 56,
+      "issues": [
+        "Duplicate lines: 8",
+        "Magic numbers: 7"
+      ],
       "priority": "medium"
     },
     {
@@ -59,7 +169,7 @@
     {
       "file": "lib/types/api.ts",
       "metrics": {
-        "complexity": 10,
+        "complexity": 11,
         "complexityScore": 50,
         "maintainability": 75,
         "testCoverage": 0,
@@ -70,6 +180,25 @@
       },
       "totalScore": 53,
       "issues": [],
+      "priority": "medium"
+    },
+    {
+      "file": "lib/utils/imageOptimization.ts",
+      "metrics": {
+        "complexity": 103,
+        "complexityScore": 25,
+        "maintainability": 75,
+        "testCoverage": 0,
+        "documentation": 75,
+        "dependencyComplexity": 100,
+        "codeSmells": 2,
+        "codeSmellScore": 75
+      },
+      "totalScore": 53,
+      "issues": [
+        "Duplicate lines: 20",
+        "Magic numbers: 30"
+      ],
       "priority": "medium"
     },
     {
@@ -109,6 +238,184 @@
       "priority": "medium"
     },
     {
+      "file": "lib/hooks/useMediaDeletion.ts",
+      "metrics": {
+        "complexity": 23,
+        "complexityScore": 25,
+        "maintainability": 83,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 0,
+        "codeSmellScore": 100
+      },
+      "totalScore": 50,
+      "issues": [],
+      "priority": "medium"
+    },
+    {
+      "file": "app/api/media/route.ts",
+      "metrics": {
+        "complexity": 14,
+        "complexityScore": 50,
+        "maintainability": 67,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 1,
+        "codeSmellScore": 75
+      },
+      "totalScore": 48,
+      "issues": [
+        "Duplicate lines: 1"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "app/types/forms.ts",
+      "metrics": {
+        "complexity": 24,
+        "complexityScore": 25,
+        "maintainability": 75,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 0,
+        "codeSmellScore": 100
+      },
+      "totalScore": 48,
+      "issues": [],
+      "priority": "medium"
+    },
+    {
+      "file": "lib/hooks/__tests__/useLazyLoading.test.ts",
+      "metrics": {
+        "complexity": 13,
+        "complexityScore": 50,
+        "maintainability": 67,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 2,
+        "codeSmellScore": 75
+      },
+      "totalScore": 48,
+      "issues": [
+        "Duplicate lines: 23",
+        "Magic numbers: 7"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "lib/hooks/useUploadProgress.ts",
+      "metrics": {
+        "complexity": 18,
+        "complexityScore": 50,
+        "maintainability": 67,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 1,
+        "codeSmellScore": 75
+      },
+      "totalScore": 48,
+      "issues": [
+        "Duplicate lines: 5"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "lib/services/__tests__/thumbnailService.test.ts",
+      "metrics": {
+        "complexity": 10,
+        "complexityScore": 50,
+        "maintainability": 67,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 1,
+        "codeSmellScore": 75
+      },
+      "totalScore": 48,
+      "issues": [
+        "Duplicate lines: 14"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "lib/hooks/useInfiniteScroll.ts",
+      "metrics": {
+        "complexity": 71,
+        "complexityScore": 25,
+        "maintainability": 67,
+        "testCoverage": 0,
+        "documentation": 50,
+        "dependencyComplexity": 100,
+        "codeSmells": 1,
+        "codeSmellScore": 75
+      },
+      "totalScore": 47,
+      "issues": [
+        "Magic numbers: 10"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "lib/hooks/useIntersectionObserver.ts",
+      "metrics": {
+        "complexity": 59,
+        "complexityScore": 25,
+        "maintainability": 67,
+        "testCoverage": 0,
+        "documentation": 50,
+        "dependencyComplexity": 100,
+        "codeSmells": 1,
+        "codeSmellScore": 75
+      },
+      "totalScore": 47,
+      "issues": [
+        "Duplicate lines: 2"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "lib/hooks/useUrlSync.ts",
+      "metrics": {
+        "complexity": 34,
+        "complexityScore": 25,
+        "maintainability": 83,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 1,
+        "codeSmellScore": 75
+      },
+      "totalScore": 47,
+      "issues": [
+        "Duplicate lines: 1"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "lib/hooks/__tests__/useGestureRecognition.test.ts",
+      "metrics": {
+        "complexity": 14,
+        "complexityScore": 50,
+        "maintainability": 58,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 2,
+        "codeSmellScore": 75
+      },
+      "totalScore": 46,
+      "issues": [
+        "Duplicate lines: 17",
+        "Magic numbers: 38"
+      ],
+      "priority": "medium"
+    },
+    {
       "file": "app/api/auth/[auth0]/route.ts",
       "metrics": {
         "complexity": 25,
@@ -124,6 +431,62 @@
       "issues": [
         "Duplicate lines: 1",
         "Magic numbers: 6"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "app/api/media/download/route.ts",
+      "metrics": {
+        "complexity": 22,
+        "complexityScore": 25,
+        "maintainability": 75,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 1,
+        "codeSmellScore": 75
+      },
+      "totalScore": 45,
+      "issues": [
+        "Magic numbers: 8"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "app/api/media/paginated/route.ts",
+      "metrics": {
+        "complexity": 30,
+        "complexityScore": 25,
+        "maintainability": 75,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 2,
+        "codeSmellScore": 75
+      },
+      "totalScore": 45,
+      "issues": [
+        "Duplicate lines: 1",
+        "Magic numbers: 7"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "app/api/projects/[id]/media/[mediaId]/route.ts",
+      "metrics": {
+        "complexity": 25,
+        "complexityScore": 25,
+        "maintainability": 75,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 2,
+        "codeSmellScore": 75
+      },
+      "totalScore": 45,
+      "issues": [
+        "Duplicate lines: 2",
+        "Magic numbers: 8"
       ],
       "priority": "medium"
     },
@@ -147,6 +510,117 @@
       "priority": "medium"
     },
     {
+      "file": "lib/hooks/mobile/useDeviceOrientation.ts",
+      "metrics": {
+        "complexity": 70,
+        "complexityScore": 25,
+        "maintainability": 75,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 1,
+        "codeSmellScore": 75
+      },
+      "totalScore": 45,
+      "issues": [
+        "Duplicate lines: 6"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "lib/hooks/mobile/useHapticFeedback.ts",
+      "metrics": {
+        "complexity": 77,
+        "complexityScore": 25,
+        "maintainability": 75,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 2,
+        "codeSmellScore": 75
+      },
+      "totalScore": 45,
+      "issues": [
+        "Duplicate lines: 7",
+        "Magic numbers: 15"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "lib/hooks/useLongPress.ts",
+      "metrics": {
+        "complexity": 39,
+        "complexityScore": 25,
+        "maintainability": 75,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 2,
+        "codeSmellScore": 75
+      },
+      "totalScore": 45,
+      "issues": [
+        "Duplicate lines: 5",
+        "Magic numbers: 11"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "lib/hooks/useSwipeNavigation.ts",
+      "metrics": {
+        "complexity": 67,
+        "complexityScore": 25,
+        "maintainability": 75,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 1,
+        "codeSmellScore": 75
+      },
+      "totalScore": 45,
+      "issues": [
+        "Duplicate lines: 1"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "lib/utils/mobile/deviceDetection.ts",
+      "metrics": {
+        "complexity": 101,
+        "complexityScore": 25,
+        "maintainability": 75,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 1,
+        "codeSmellScore": 75
+      },
+      "totalScore": 45,
+      "issues": [
+        "Duplicate lines: 9"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "app/api/media/upload/route.ts",
+      "metrics": {
+        "complexity": 22,
+        "complexityScore": 25,
+        "maintainability": 75,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 88,
+        "codeSmells": 2,
+        "codeSmellScore": 75
+      },
+      "totalScore": 44,
+      "issues": [
+        "Duplicate lines: 1",
+        "Magic numbers: 8"
+      ],
+      "priority": "medium"
+    },
+    {
       "file": "app/api/projects/route.ts",
       "metrics": {
         "complexity": 26,
@@ -165,9 +639,44 @@
       "priority": "medium"
     },
     {
-      "file": "lib/types/database.ts",
+      "file": "lib/hooks/mobile/useViewportSize.ts",
       "metrics": {
-        "complexity": 21,
+        "complexity": 80,
+        "complexityScore": 25,
+        "maintainability": 67,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 2,
+        "codeSmellScore": 75
+      },
+      "totalScore": 43,
+      "issues": [
+        "Duplicate lines: 11",
+        "Magic numbers: 7"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "lib/hooks/usePagination.ts",
+      "metrics": {
+        "complexity": 66,
+        "complexityScore": 25,
+        "maintainability": 58,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 0,
+        "codeSmellScore": 100
+      },
+      "totalScore": 43,
+      "issues": [],
+      "priority": "medium"
+    },
+    {
+      "file": "lib/hooks/usePinchZoom.ts",
+      "metrics": {
+        "complexity": 57,
         "complexityScore": 25,
         "maintainability": 58,
         "testCoverage": 0,
@@ -178,9 +687,48 @@
       },
       "totalScore": 41,
       "issues": [
-        "Duplicate lines: 2"
+        "Duplicate lines: 7"
       ],
       "priority": "medium"
+    },
+    {
+      "file": "lib/hooks/performance/usePerformanceMonitoring.ts",
+      "metrics": {
+        "complexity": 119,
+        "complexityScore": 25,
+        "maintainability": 67,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 3,
+        "codeSmellScore": 50
+      },
+      "totalScore": 40,
+      "issues": [
+        "Duplicate lines: 11",
+        "Magic numbers: 10",
+        "Deep nesting: 11"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "app/api/media/thumbnail/__tests__/route.test.ts",
+      "metrics": {
+        "complexity": 34,
+        "complexityScore": 25,
+        "maintainability": 50,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 2,
+        "codeSmellScore": 75
+      },
+      "totalScore": 39,
+      "issues": [
+        "Duplicate lines: 25",
+        "Magic numbers: 51"
+      ],
+      "priority": "high"
     },
     {
       "file": "lib/api/projects.ts",
@@ -197,6 +745,24 @@
       "totalScore": 39,
       "issues": [
         "Duplicate lines: 20"
+      ],
+      "priority": "high"
+    },
+    {
+      "file": "lib/types/database.ts",
+      "metrics": {
+        "complexity": 31,
+        "complexityScore": 25,
+        "maintainability": 50,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 1,
+        "codeSmellScore": 75
+      },
+      "totalScore": 39,
+      "issues": [
+        "Duplicate lines: 2"
       ],
       "priority": "high"
     }
