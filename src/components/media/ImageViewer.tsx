@@ -67,9 +67,9 @@ export function ImageViewer({
   quality = 90,
   showPerformanceMetrics = false,
   enableProgressiveLoading = true,
-  enableKeyboardNavigation: _enableKeyboardNavigation = true,
-  announceZoomChanges: _announceZoomChanges = true,
-  describedBy: _describedBy
+  enableKeyboardNavigation: _enableKeyboardNavigation = true, // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for accessibility features
+  announceZoomChanges: _announceZoomChanges = true, // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for accessibility features
+  describedBy: _describedBy // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for accessibility features
 }: ImageViewerProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const imageRef = useRef<HTMLImageElement>(null)

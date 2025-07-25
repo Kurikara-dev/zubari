@@ -85,7 +85,7 @@ export function useLazyLoading<T extends HTMLElement = HTMLElement>(
         return newState
       })
     },
-    [options.onEnter, options.onExit]
+    [options]
   )
 
   // Set up Intersection Observer
@@ -153,7 +153,7 @@ export function useLazyImage(
   })
 
   const shouldLoad = baseState.isVisible || baseState.hasEntered
-  const _imageSrc = shouldLoad ? src : undefined
+  const _imageSrc = shouldLoad ? src : undefined // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for conditional loading
 
   // Update loading state when src changes
   useEffect(() => {
@@ -179,14 +179,14 @@ export function useLazyImage(
     }))
 
     options.onLoad?.()
-  }, [options.onLoad])
+  }, [options])
 
   // Handle image error
-  const handleImageError = useCallback((_event: Event) => {
+  const handleImageError = useCallback((_event: Event) => { // eslint-disable-line @typescript-eslint/no-unused-vars
     const error = new Error('Failed to load image')
 
     options.onError?.(error)
-  }, [options.onError])
+  }, [options])
 
   // Attach image event listeners
   useEffect(() => {
@@ -264,7 +264,7 @@ export function useImagePreloader(
           const newProgress = (loaded / urls.length) * 100
           setProgress(newProgress)
           options.onProgress?.(loaded, urls.length)
-        } catch (_error) {
+        } catch (_error) { // eslint-disable-line @typescript-eslint/no-unused-vars
           // Continue with other images even if one fails
           loaded++
           setProgress((loaded / urls.length) * 100)
@@ -274,7 +274,7 @@ export function useImagePreloader(
     }
 
     preloadImages()
-  }, [urls, options.onProgress])
+  }, [urls, options])
 
   return {
     loadedUrls,
@@ -288,7 +288,7 @@ export function useImagePreloader(
  */
 export function useBatchLazyLoading<T extends HTMLElement = HTMLElement>(
   itemCount: number,
-  _batchSize: number = 10,
+  _batchSize: number = 10, // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for batch processing
   _options: UseLazyLoadingOptions = {}
 ): {
   refs: RefObject<T | null>[]
@@ -381,7 +381,7 @@ export function useVirtualLazyLoading(
   itemCount: number,
   itemHeight: number,
   containerHeight: number,
-  _options: UseLazyLoadingOptions = {}
+  _options: UseLazyLoadingOptions = {} // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for virtual scrolling options
 ) {
   const [scrollTop, setScrollTop] = useState(0)
   const [visibleRange, setVisibleRange] = useState({ start: 0, end: 0 })

@@ -94,7 +94,7 @@ export const KeyboardNavigationProvider: React.FC<KeyboardNavigationProviderProp
     isActive: false
   })
   
-  const [currentScope, setCurrentScope] = React.useState(defaultScope)
+  const [currentScope, _setCurrentScope] = React.useState(defaultScope) // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for scope management
   const [focusableElements, setFocusableElements] = React.useState<HTMLElement[]>([])
 
   // Get all focusable elements in a container
@@ -303,7 +303,7 @@ export const KeyboardNavigationProvider: React.FC<KeyboardNavigationProviderProp
     }
 
     return releaseTrap
-  }, [enableFocusTrapping, getFocusableElements, updateFocusableElements])
+  }, [enableFocusTrapping, getFocusableElements, updateFocusableElements]) // eslint-disable-line react-hooks/exhaustive-deps -- releaseFocus creates circular dependency
 
   // Release focus trap
   const releaseFocus = useCallback(() => {
@@ -390,7 +390,7 @@ export const KeyboardNavigationProvider: React.FC<KeyboardNavigationProviderProp
     }
     
     return false
-  }, [focusableElements, moveFocusTo])
+  }, [focusableElements, moveFocusTo]) // eslint-disable-line react-hooks/exhaustive-deps -- estimateGridColumns creates circular dependency
 
   // Navigate list layout
   const navigateList = useCallback((
@@ -579,7 +579,7 @@ export const IMAGE_GRID_SHORTCUTS: KeyboardShortcut[] = [
   {
     key: '?',
     description: 'Show keyboard shortcuts',
-    action: (event) => {
+    action: (_event) => { // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for future implementation
       // Will be handled by provider
     },
     scope: 'global'

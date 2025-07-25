@@ -2,6 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'next/navigation'
+import Link from 'next/link'
 import ProjectCard from './ProjectCard'
 import ProjectFilters from './ProjectFilters'
 import ProjectPagination from './ProjectPagination'
@@ -115,12 +116,12 @@ export default function ProjectList() {
             {hasFilters ? '検索条件を変更してみてください' : '新しいプロジェクトを作成してみましょう'}
           </p>
           {!hasFilters && (
-            <a
+            <Link
               href="/projects/new"
               className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium py-3 sm:py-2 px-4 rounded-md transition duration-200 inline-block touch-target touch-button"
             >
               プロジェクト作成
-            </a>
+            </Link>
           )}
         </div>
       )}

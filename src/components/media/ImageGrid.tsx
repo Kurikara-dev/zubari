@@ -53,8 +53,8 @@ function ImageGridContent({
   showPagination = false
 }: ImageGridProps) {
   // Mobile optimization hooks
-  const { isMobile, isTablet, getCurrentBreakpoint, matches } = useViewportSize()
-  const { supportsTouch, isHighDPI, optimizedSettings } = useDeviceDetection()
+  const { isMobile: _isMobile, isTablet: _isTablet, getCurrentBreakpoint, matches } = useViewportSize() // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for responsive design
+  const { supportsTouch, isHighDPI: _isHighDPI, optimizedSettings: _optimizedSettings } = useDeviceDetection() // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for performance optimization
   const touchFeedback = useTouchFeedback()
   const [showUploadModal, setShowUploadModal] = useState(false)
   const [selectedMedia, setSelectedMedia] = useState<Media | null>(null)

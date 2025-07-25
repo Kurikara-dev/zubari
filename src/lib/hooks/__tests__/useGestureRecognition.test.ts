@@ -44,7 +44,7 @@ describe('useGestureRecognition', () => {
   })
 
   it('should initialize with idle state', () => {
-    const { result } = renderHook(() =>
+    const { result: _ } = renderHook(() => // eslint-disable-line @typescript-eslint/no-unused-vars
       useGestureRecognition(mockElement, {}, mockOnGesture)
     )
 
@@ -54,7 +54,7 @@ describe('useGestureRecognition', () => {
   })
 
   it('should detect single tap gesture', async () => {
-    const { result } = renderHook(() =>
+    const { result: _ } = renderHook(() => // eslint-disable-line @typescript-eslint/no-unused-vars
       useGestureRecognition(mockElement, {}, mockOnGesture)
     )
 
@@ -86,7 +86,7 @@ describe('useGestureRecognition', () => {
   })
 
   it('should detect double tap gesture', async () => {
-    const { result } = renderHook(() =>
+    const { result: _ } = renderHook(() => // eslint-disable-line @typescript-eslint/no-unused-vars
       useGestureRecognition(mockElement, { doubleTapDelay: 300 }, mockOnGesture)
     )
 
@@ -115,7 +115,7 @@ describe('useGestureRecognition', () => {
   })
 
   it('should detect long press gesture', async () => {
-    const { result } = renderHook(() =>
+    const { result: _ } = renderHook(() => // eslint-disable-line @typescript-eslint/no-unused-vars
       useGestureRecognition(mockElement, { longPressDelay: 500 }, mockOnGesture)
     )
 
@@ -142,7 +142,7 @@ describe('useGestureRecognition', () => {
   })
 
   it('should detect horizontal swipe gesture', async () => {
-    const { result } = renderHook(() =>
+    const { result: _ } = renderHook(() => // eslint-disable-line @typescript-eslint/no-unused-vars
       useGestureRecognition(mockElement, { swipeThreshold: 50 }, mockOnGesture)
     )
 
@@ -181,7 +181,7 @@ describe('useGestureRecognition', () => {
   })
 
   it('should detect pinch gesture with two touches', async () => {
-    const { result } = renderHook(() =>
+    const { result: _ } = renderHook(() => // eslint-disable-line @typescript-eslint/no-unused-vars
       useGestureRecognition(mockElement, {}, mockOnGesture)
     )
 
@@ -244,7 +244,7 @@ describe('useGestureRecognition', () => {
   })
 
   it('should handle touch cancel events', async () => {
-    const { result } = renderHook(() =>
+    const { result: _ } = renderHook(() => // eslint-disable-line @typescript-eslint/no-unused-vars
       useGestureRecognition(mockElement, {}, mockOnGesture)
     )
 
@@ -275,7 +275,7 @@ describe('useGestureRecognition', () => {
       pinchThreshold: 0.2
     }
 
-    const { result } = renderHook(() =>
+    const { result: _ } = renderHook(() => // eslint-disable-line @typescript-eslint/no-unused-vars
       useGestureRecognition(mockElement, customOptions, mockOnGesture)
     )
 

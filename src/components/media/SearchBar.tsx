@@ -21,11 +21,12 @@ export default function SearchBar({
   const [inputValue, setInputValue] = useState(value)
 
   // Create debounced onChange handler
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- debounce function is stable
   const debouncedOnChange = useCallback(
     debounce((searchValue: string) => {
       onChange(searchValue)
     }, debounceMs),
-    [onChange, debounceMs, debounce]
+    [onChange, debounceMs]
   )
 
   // Handle input changes

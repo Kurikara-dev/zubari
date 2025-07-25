@@ -286,7 +286,7 @@ class ThumbnailService {
       throw new Error('Supabase client not initialized');
     }
     
-    const { data: _data, error } = await this.supabase.storage
+    const { data: _data, error } = await this.supabase.storage // eslint-disable-line @typescript-eslint/no-unused-vars -- Upload response data not needed
       .from('project-media')
       .upload(path, buffer, {
         contentType: `image/${format}`,

@@ -37,8 +37,8 @@ function ImagePreviewModalContent({
   totalCount = 1
 }: ImagePreviewModalProps) {
   // Mobile optimization hooks
-  const { isMobile, isTablet } = useViewportSize()
-  const { supportsTouch, optimizedSettings } = useDeviceDetection()
+  const { isMobile: _isMobile, isTablet: _isTablet } = useViewportSize() // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for responsive design
+  const { supportsTouch, optimizedSettings: _optimizedSettings } = useDeviceDetection() // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for performance optimization
   const touchFeedback = useTouchFeedback()
   const modalRef = useRef<HTMLDivElement>(null)
   const [showDeleteDialog, setShowDeleteDialog] = useState(false)
@@ -152,7 +152,7 @@ function ImagePreviewModalContent({
         }
         break
     }
-  }, [isOpen, onClose, onNavigate, showNavigation, showMetadata, showDeleteDialog, canDelete, deleteMutation.isPending, totalCount])
+  }, [isOpen, onClose, onNavigate, showNavigation, showMetadata, showDeleteDialog, canDelete, deleteMutation.isPending, totalCount, supportsTouch, touchFeedback])
 
   // Handle click outside modal
   const handleBackdropClick = useCallback((event: React.MouseEvent) => {

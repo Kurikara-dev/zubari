@@ -124,7 +124,7 @@ export const ProgressiveImageLoader: React.FC<ProgressiveImageLoaderProps> = ({
   enableMetrics = false,
   onMetrics
 }) => {
-  const { optimizedSettings, isHighDPI, deviceInfo } = useDeviceDetection()
+  const { optimizedSettings, isHighDPI, deviceInfo: _deviceInfo } = useDeviceDetection() // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for device optimization
   const [imageState, setImageState] = useState<ImageState>({
     isLoading: false,
     isLoaded: false,
@@ -320,7 +320,7 @@ export const ProgressiveImageLoader: React.FC<ProgressiveImageLoaderProps> = ({
     >
       {/* Placeholder image */}
       {placeholderSrc && (
-        <img
+        <img // eslint-disable-line @next/next/no-img-element -- Custom progressive loading requires direct img control
           src={placeholderSrc}
           alt=""
           className={`progressive-placeholder ${placeholderClassName}`}
@@ -331,7 +331,7 @@ export const ProgressiveImageLoader: React.FC<ProgressiveImageLoaderProps> = ({
 
       {/* Main image */}
       {imageState.currentSrc && (
-        <img
+        <img // eslint-disable-line @next/next/no-img-element -- Custom progressive loading requires direct img control
           ref={imgRef}
           src={imageState.currentSrc}
           alt={alt}

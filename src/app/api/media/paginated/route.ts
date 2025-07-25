@@ -19,8 +19,7 @@ export async function GET(request: NextRequest) {
     //   );
     // }
     
-    // Temporary: Use a default user ID for Phase 2 implementation
-    const _session = { user: { sub: 'temp-user-id' } };
+    // Temporary: Authentication disabled for Phase 2 implementation
 
     const { searchParams } = new URL(request.url);
     const projectId = searchParams.get('projectId');

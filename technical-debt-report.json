@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-07-25T00:03:22.593Z",
+  "timestamp": "2025-07-25T00:57:38.719Z",
   "summary": {
     "overallScore": 49,
     "totalFiles": 42,
@@ -81,7 +81,7 @@
     {
       "file": "lib/hooks/useLazyLoading.ts",
       "metrics": {
-        "complexity": 80,
+        "complexity": 83,
         "complexityScore": 25,
         "maintainability": 75,
         "testCoverage": 75,
@@ -92,7 +92,7 @@
       },
       "totalScore": 60,
       "issues": [
-        "Duplicate lines: 6"
+        "Duplicate lines: 5"
       ],
       "priority": "low"
     },

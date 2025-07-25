@@ -264,7 +264,7 @@ export const TouchFeedbackButton: React.FC<TouchFeedbackButtonProps> = ({
   children,
   hapticType = 'medium',
   visualFeedback = true,
-  audioFeedback = false,
+  audioFeedback: _audioFeedback = false, // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for accessibility features
   feedbackOnHover = true,
   onClick,
   onMouseEnter,

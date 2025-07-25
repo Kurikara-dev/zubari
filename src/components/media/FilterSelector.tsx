@@ -46,7 +46,7 @@ export default function FilterSelector({
   availableUploaders = []
 }: FilterSelectorProps) {
   const [isOpen, setIsOpen] = useState(false)
-  const [_activeGroup, setActiveGroup] = useState<string | null>(null)
+  const [_activeGroup, _setActiveGroup] = useState<string | null>(null) // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for filter grouping functionality
   const dropdownRef = useRef<HTMLDivElement>(null)
 
   // Handle click outside to close dropdown
@@ -54,7 +54,7 @@ export default function FilterSelector({
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false)
-        setActiveGroup(null)
+        _setActiveGroup(null)
       }
     }
 

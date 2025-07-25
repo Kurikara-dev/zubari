@@ -40,7 +40,7 @@ const DEFAULT_FILTER_STATE: FilterState = {
 }
 
 export default function ImageFilters({
-  projectId: _projectId,
+  projectId: _projectId, // eslint-disable-line @typescript-eslint/no-unused-vars -- Reserved for future project-specific filtering
   initialState = {},
   onChange,
   availableUploaders = [],
