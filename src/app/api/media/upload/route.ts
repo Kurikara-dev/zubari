@@ -26,6 +26,10 @@ export async function POST(request: NextRequest) {
       }
 
       // Verify that the user owns the project
+      if (!supabase) {
+        return createErrorResponse('Database connection not available', 500)
+      }
+      
       const { data: project, error: projectError } = await supabase
         .from('projects')
         .select('id, owner_id')

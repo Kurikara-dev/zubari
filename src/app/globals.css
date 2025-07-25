@@ -3,11 +3,40 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --surface: #ffffff;
+  --surface-secondary: #f9fafb;
+  --border: #e5e7eb;
+  --text: #111827;
+  --text-muted: #6b7280;
+  --text-light: #9ca3af;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --accent-active: #1d4ed8;
+  --danger: #ef4444;
+  --danger-hover: #dc2626;
+  --danger-active: #b91c1c;
+  --success: #10b981;
+  --success-hover: #059669;
+  --overlay: rgba(0, 0, 0, 0.5);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-light: var(--text-light);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-active: var(--accent-active);
+  --color-danger: var(--danger);
+  --color-danger-hover: var(--danger-hover);
+  --color-danger-active: var(--danger-active);
+  --color-success: var(--success);
+  --color-success-hover: var(--success-hover);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -16,6 +45,21 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --surface: #111827;
+    --surface-secondary: #1f2937;
+    --border: #374151;
+    --text: #f9fafb;
+    --text-muted: #d1d5db;
+    --text-light: #9ca3af;
+    --accent: #60a5fa;
+    --accent-hover: #3b82f6;
+    --accent-active: #2563eb;
+    --danger: #f87171;
+    --danger-hover: #ef4444;
+    --danger-active: #dc2626;
+    --success: #34d399;
+    --success-hover: #10b981;
+    --overlay: rgba(0, 0, 0, 0.75);
   }
 }
 
@@ -79,6 +123,16 @@ body {
   font-size: 16px; /* Prevents zoom on iOS */
   -webkit-appearance: none;
   border-radius: 8px;
+}
+
+/* Enhanced input visibility */
+input, textarea, select {
+  color: var(--text) !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-light) !important;
+  opacity: 1;
 }
 
 /* Mobile-friendly spacing utilities */

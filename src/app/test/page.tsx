@@ -17,6 +17,11 @@ export default function TestPage() {
   const testConnection = async () => {
     try {
       // Test basic connection
+      if (!supabase) {
+        setConnectionStatus('❌ Database connection not available');
+        return;
+      }
+      
       const { error } = await supabase
         .from('users')
         .select('count', { count: 'exact', head: true });
@@ -34,6 +39,11 @@ export default function TestPage() {
   const testRLS = async () => {
     try {
       // Test RLS policies
+      if (!supabase) {
+        setRlsStatus('❌ Database connection not available');
+        return;
+      }
+      
       const { error: usersError } = await supabase
         .from('users')
         .select('*');
@@ -55,6 +65,11 @@ export default function TestPage() {
   const testSchema = async () => {
     try {
       // Test if both tables exist and have expected structure
+      if (!supabase) {
+        setSchemaStatus('❌ Database connection not available');
+        return;
+      }
+      
       const { error: usersError } = await supabase
         .from('users')
         .select('id, email, name, avatar_url, created_at, updated_at')

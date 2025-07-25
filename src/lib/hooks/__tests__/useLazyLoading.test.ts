@@ -83,7 +83,7 @@ describe('useLazyLoading', () => {
         {
           isIntersecting: true,
           target: mockElement
-        } as IntersectionObserverEntry
+        } as unknown as IntersectionObserverEntry
       ])
     })
 
@@ -97,7 +97,7 @@ describe('useLazyLoading', () => {
         {
           isIntersecting: false,
           target: mockElement
-        } as IntersectionObserverEntry
+        } as unknown as IntersectionObserverEntry
       ])
     })
 
@@ -166,7 +166,7 @@ describe('useLazyImage', () => {
         {
           isIntersecting: true,
           target: mockElement
-        } as IntersectionObserverEntry
+        } as unknown as IntersectionObserverEntry
       ])
     })
 

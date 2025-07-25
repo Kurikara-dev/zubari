@@ -1,29 +1,13 @@
 {
-  "timestamp": "2025-07-25T01:46:19.443Z",
+  "timestamp": "2025-07-25T23:26:52.115Z",
   "summary": {
-    "overallScore": 49,
+    "overallScore": 48,
     "totalFiles": 42,
     "highPriorityIssues": 3,
-    "mediumPriorityIssues": 34,
-    "lowPriorityIssues": 5
+    "mediumPriorityIssues": 35,
+    "lowPriorityIssues": 4
   },
   "files": [
-    {
-      "file": "lib/supabase.ts",
-      "metrics": {
-        "complexity": 4,
-        "complexityScore": 100,
-        "maintainability": 92,
-        "testCoverage": 0,
-        "documentation": 25,
-        "dependencyComplexity": 100,
-        "codeSmells": 0,
-        "codeSmellScore": 100
-      },
-      "totalScore": 67,
-      "issues": [],
-      "priority": "low"
-    },
     {
       "file": "lib/services/thumbnailService.ts",
       "metrics": {
@@ -95,6 +79,22 @@
         "Duplicate lines: 5"
       ],
       "priority": "low"
+    },
+    {
+      "file": "lib/supabase.ts",
+      "metrics": {
+        "complexity": 9,
+        "complexityScore": 75,
+        "maintainability": 83,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 0,
+        "codeSmellScore": 100
+      },
+      "totalScore": 60,
+      "issues": [],
+      "priority": "medium"
     },
     {
       "file": "lib/types/media.ts",
@@ -256,7 +256,7 @@
     {
       "file": "app/api/media/route.ts",
       "metrics": {
-        "complexity": 14,
+        "complexity": 16,
         "complexityScore": 50,
         "maintainability": 67,
         "testCoverage": 0,
@@ -321,24 +321,6 @@
       "totalScore": 48,
       "issues": [
         "Duplicate lines: 5"
-      ],
-      "priority": "medium"
-    },
-    {
-      "file": "lib/services/__tests__/thumbnailService.test.ts",
-      "metrics": {
-        "complexity": 10,
-        "complexityScore": 50,
-        "maintainability": 67,
-        "testCoverage": 0,
-        "documentation": 25,
-        "dependencyComplexity": 100,
-        "codeSmells": 1,
-        "codeSmellScore": 75
-      },
-      "totalScore": 48,
-      "issues": [
-        "Duplicate lines: 14"
       ],
       "priority": "medium"
     },
@@ -437,7 +419,7 @@
     {
       "file": "app/api/media/download/route.ts",
       "metrics": {
-        "complexity": 22,
+        "complexity": 24,
         "complexityScore": 25,
         "maintainability": 75,
         "testCoverage": 0,
@@ -448,7 +430,7 @@
       },
       "totalScore": 45,
       "issues": [
-        "Magic numbers: 8"
+        "Magic numbers: 9"
       ],
       "priority": "medium"
     },
@@ -604,7 +586,7 @@
     {
       "file": "app/api/media/upload/route.ts",
       "metrics": {
-        "complexity": 22,
+        "complexity": 24,
         "complexityScore": 25,
         "maintainability": 75,
         "testCoverage": 0,
@@ -616,7 +598,25 @@
       "totalScore": 44,
       "issues": [
         "Duplicate lines: 1",
-        "Magic numbers: 8"
+        "Magic numbers: 9"
+      ],
+      "priority": "medium"
+    },
+    {
+      "file": "lib/services/__tests__/thumbnailService.test.ts",
+      "metrics": {
+        "complexity": 10,
+        "complexityScore": 50,
+        "maintainability": 50,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 100,
+        "codeSmells": 1,
+        "codeSmellScore": 75
+      },
+      "totalScore": 44,
+      "issues": [
+        "Duplicate lines: 14"
       ],
       "priority": "medium"
     },
@@ -712,25 +712,6 @@
       "priority": "medium"
     },
     {
-      "file": "app/api/media/thumbnail/__tests__/route.test.ts",
-      "metrics": {
-        "complexity": 34,
-        "complexityScore": 25,
-        "maintainability": 50,
-        "testCoverage": 0,
-        "documentation": 25,
-        "dependencyComplexity": 100,
-        "codeSmells": 2,
-        "codeSmellScore": 75
-      },
-      "totalScore": 39,
-      "issues": [
-        "Duplicate lines: 25",
-        "Magic numbers: 51"
-      ],
-      "priority": "high"
-    },
-    {
       "file": "lib/api/projects.ts",
       "metrics": {
         "complexity": 75,
@@ -763,6 +744,25 @@
       "totalScore": 39,
       "issues": [
         "Duplicate lines: 2"
+      ],
+      "priority": "high"
+    },
+    {
+      "file": "app/api/media/thumbnail/__tests__/route.test.ts",
+      "metrics": {
+        "complexity": 34,
+        "complexityScore": 25,
+        "maintainability": 50,
+        "testCoverage": 0,
+        "documentation": 25,
+        "dependencyComplexity": 88,
+        "codeSmells": 2,
+        "codeSmellScore": 75
+      },
+      "totalScore": 38,
+      "issues": [
+        "Duplicate lines: 25",
+        "Magic numbers: 51"
       ],
       "priority": "high"
     }

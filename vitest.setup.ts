@@ -63,6 +63,25 @@ vi.mock('./src/lib/supabase', () => ({
   supabaseAdmin: mockSupabaseClient
 }))
 
+// Mock Sharp for image processing
+const mockSharp = vi.fn(() => ({
+  resize: vi.fn().mockReturnThis(),
+  webp: vi.fn().mockReturnThis(),
+  jpeg: vi.fn().mockReturnThis(),
+  png: vi.fn().mockReturnThis(),
+  toBuffer: vi.fn().mockResolvedValue(Buffer.from('mock-image-buffer')),
+  metadata: vi.fn().mockResolvedValue({
+    width: 800,
+    height: 600,
+    format: 'jpeg'
+  })
+}))
+
+vi.mock('sharp', () => ({
+  default: mockSharp,
+  __esModule: true
+}))
+
 // Mock fetch
 global.fetch = vi.fn()
 
@@ -87,12 +106,14 @@ Object.defineProperty(global, 'URL', {
     public pathname: string
     public search: string
     public hash: string = ''
+    public searchParams: URLSearchParams
     
     constructor(href: string, base?: string) {
       this.href = base ? `${base}${href}` : href
       const urlParts = this.href.split('?')
       this.pathname = urlParts[0].replace(/^https?:\/\/[^\/]*/, '')
       this.search = urlParts[1] ? '?' + urlParts[1] : ''
+      this.searchParams = new URLSearchParams(this.search)
     }
     
     toString() { return this.href }

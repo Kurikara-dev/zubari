@@ -263,7 +263,7 @@ describe('GestureHandler', () => {
     const { usePinchZoom } = await import('@/lib/hooks/usePinchZoom')
     
     // Mock zoom state
-    usePinchZoom.mockReturnValue({
+    ;(usePinchZoom as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
       scale: 2,
       position: { x: 10, y: 20 },
       isZooming: false,
@@ -290,7 +290,7 @@ describe('GestureHandler', () => {
     const { useLongPress } = await import('@/lib/hooks/useLongPress')
     
     // Mock long press state with progress
-    useLongPress.mockReturnValue({
+    ;(useLongPress as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
       isLongPressing: false,
       progress: 0.5,
       position: { x: 100, y: 150 },

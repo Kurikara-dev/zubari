@@ -9,8 +9,20 @@ vi.mock('@supabase/supabase-js', () => ({
 
 // Mock Sharp - it may not be available in test environment
 vi.mock('sharp', () => ({
-  default: vi.fn()
-}), { virtual: true })
+  default: vi.fn(() => ({
+    resize: vi.fn().mockReturnThis(),
+    webp: vi.fn().mockReturnThis(),
+    jpeg: vi.fn().mockReturnThis(),
+    png: vi.fn().mockReturnThis(),
+    toBuffer: vi.fn().mockResolvedValue(Buffer.from('mock-image-buffer')),
+    metadata: vi.fn().mockResolvedValue({
+      width: 800,
+      height: 600,
+      format: 'jpeg'
+    })
+  })),
+  __esModule: true
+}))
 
 describe('ThumbnailService', () => {
   const mockSupabase = {
@@ -31,7 +43,7 @@ describe('ThumbnailService', () => {
 
   beforeEach(() => {
     vi.clearAllMocks()
-    ;(createClient as unknown).mockReturnValue(mockSupabase)
+    ;(createClient as unknown as ReturnType<typeof vi.fn>).mockReturnValue(mockSupabase)
   })
 
   afterEach(() => {

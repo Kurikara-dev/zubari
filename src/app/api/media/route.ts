@@ -7,6 +7,11 @@ import type { Media } from '@/lib/types/api'
 export async function GET(request: NextRequest) {
   return withAuth(request, async (authRequest: AuthenticatedRequest) => {
     try {
+      if (!supabase) {
+        console.error('Supabase client not initialized')
+        return createErrorResponse('Service temporarily unavailable', 503)
+      }
+
       const { searchParams } = new URL(authRequest.url)
       const projectId = searchParams.get('projectId')
 

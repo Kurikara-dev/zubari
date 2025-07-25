@@ -50,22 +50,29 @@ export default function ProjectActions({ project }: ProjectActionsProps) {
       <div className="flex items-center space-x-1 sm:space-x-2">
         <a
           href={`/projects/${project.id}`}
-          className="text-blue-600 hover:text-blue-700 active:text-blue-800 text-sm font-medium transition duration-200 touch-target px-2 py-1 rounded"
+          className="text-accent hover:text-accent-hover active:text-accent-active text-sm font-medium transition duration-200 touch-target px-2 py-1 rounded"
         >
           詳細
         </a>
-        <span className="text-gray-300 hidden sm:inline">|</span>
+        <span className="text-text-light hidden sm:inline">|</span>
         <a
           href={`/projects/${project.id}/edit`}
-          className="text-green-600 hover:text-green-700 active:text-green-800 text-sm font-medium transition duration-200 touch-target px-2 py-1 rounded"
+          className="text-text hover:text-accent active:text-accent-active text-sm font-medium transition duration-200 touch-target px-2 py-1 rounded"
         >
           編集
         </a>
-        <span className="text-gray-300 hidden sm:inline">|</span>
+        <span className="text-text-light hidden sm:inline">|</span>
+        <a
+          href={`/projects/${project.id}/media`}
+          className="text-success hover:text-success-hover active:text-success-hover text-sm font-medium transition duration-200 touch-target px-2 py-1 rounded"
+        >
+          メディア
+        </a>
+        <span className="text-text-light hidden sm:inline">|</span>
         <button
           type="button"
           onClick={() => setShowDeleteDialog(true)}
-          className="text-red-600 hover:text-red-700 active:text-red-800 text-sm font-medium transition duration-200 touch-target px-2 py-1 rounded touch-button"
+          className="text-danger hover:text-danger-hover active:text-danger-active text-sm font-medium transition duration-200 touch-target px-2 py-1 rounded touch-button"
           disabled={deleteMutation.isPending}
         >
           削除
@@ -74,22 +81,22 @@ export default function ProjectActions({ project }: ProjectActionsProps) {
 
       {/* Delete Confirmation Dialog */}
       {showDeleteDialog && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50 flex items-center justify-center">
-          <div className="relative p-4 sm:p-6 bg-white rounded-lg shadow-xl max-w-md w-full mx-4">
+        <div className="fixed inset-0 overflow-y-auto h-full w-full z-50 flex items-center justify-center" style={{backgroundColor: 'var(--overlay)'}}>
+          <div className="relative p-4 sm:p-6 bg-surface rounded-lg shadow-xl max-w-md w-full mx-4">
             <div className="mb-4">
               <div className="flex items-center mb-4">
-                <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mr-3">
-                  <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-10 h-10 bg-surface-secondary rounded-full flex items-center justify-center mr-3">
+                  <svg className="w-6 h-6 text-danger" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900">プロジェクトを削除</h3>
+                <h3 className="text-lg font-semibold text-text">プロジェクトを削除</h3>
               </div>
               
-              <p className="text-gray-600 mb-2">
-                「<strong className="text-gray-900">{project.name}</strong>」を削除しますか？
+              <p className="text-text-muted mb-2">
+                「<strong className="text-text">{project.name}</strong>」を削除しますか？
               </p>
-              <p className="text-sm text-red-600">
+              <p className="text-sm text-danger">
                 この操作は取り消すことができません。プロジェクトに関連するすべてのデータが完全に削除されます。
               </p>
             </div>
@@ -99,7 +106,7 @@ export default function ProjectActions({ project }: ProjectActionsProps) {
                 type="button"
                 onClick={() => setShowDeleteDialog(false)}
                 disabled={deleteMutation.isPending}
-                className="px-4 py-3 sm:py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 active:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 touch-target touch-button"
+                className="px-4 py-3 sm:py-2 text-sm font-medium text-text bg-surface border border-border rounded-md hover:bg-surface-secondary active:bg-surface-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent disabled:opacity-50 touch-target touch-button"
               >
                 キャンセル
               </button>
@@ -107,7 +114,7 @@ export default function ProjectActions({ project }: ProjectActionsProps) {
                 type="button"
                 onClick={handleDelete}
                 disabled={deleteMutation.isPending}
-                className="px-4 py-3 sm:py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md hover:bg-red-700 active:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 flex items-center justify-center touch-target touch-button"
+                className="px-4 py-3 sm:py-2 text-sm font-medium text-white bg-danger border border-transparent rounded-md hover:bg-danger-hover active:bg-danger-active focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-danger disabled:opacity-50 flex items-center justify-center touch-target touch-button"
               >
                 {deleteMutation.isPending && (
                   <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
@@ -120,8 +127,8 @@ export default function ProjectActions({ project }: ProjectActionsProps) {
             </div>
 
             {deleteMutation.isError && (
-              <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded-md">
-                <p className="text-sm text-red-600">
+              <div className="mt-3 p-3 bg-surface-secondary border border-danger rounded-md">
+                <p className="text-sm text-danger">
                   削除に失敗しました。しばらく時間をおいて再試行してください。
                 </p>
               </div>

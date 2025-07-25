@@ -125,7 +125,7 @@ export default function ImageUploadWithProgress({
             type="button"
             onClick={() => handleUpload()}
             disabled={disabled || isUploading}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 active:bg-blue-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="px-4 py-2 bg-accent text-white rounded-md hover:bg-accent-hover active:bg-accent-active disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             アップロード開始
           </button>

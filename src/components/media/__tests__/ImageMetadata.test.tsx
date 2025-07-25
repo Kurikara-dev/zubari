@@ -114,12 +114,12 @@ describe('ImageMetadata', () => {
   describe('Date formatting', () => {
     beforeAll(() => {
       // Mock Date to ensure consistent test results
-      jest.useFakeTimers()
-      jest.setSystemTime(new Date('2025-01-24T12:00:00.000Z'))
+      vi.useFakeTimers()
+      vi.setSystemTime(new Date('2025-01-24T12:00:00.000Z'))
     })
 
     afterAll(() => {
-      jest.useRealTimers()
+      vi.useRealTimers()
     })
 
     it('formats recent minutes correctly', () => {

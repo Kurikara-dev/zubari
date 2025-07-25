@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js'
+import { supabaseAdmin } from '@/lib/supabase'
 import sharp from 'sharp'
 import type { Media } from '@/lib/types/api'
 
@@ -50,10 +50,7 @@ const THUMBNAIL_CONFIGS: Record<ThumbnailSize, ThumbnailOptions> = {
 }
 
 class ThumbnailService {
-  private supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  )
+  private supabase = supabaseAdmin;
 
   /**
    * Generate thumbnail for a media item

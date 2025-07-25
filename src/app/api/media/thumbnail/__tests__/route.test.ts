@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+import { NextRequest } from 'next/server'
 import { GET, HEAD, DELETE } from '../route'
 
 // Mock auth middleware
@@ -93,7 +94,7 @@ describe('/api/media/thumbnail', () => {
         isAuthenticated: false 
       })
 
-      const request = new Request('http://localhost:3000/api/media/thumbnail?id=test-id')
+      const request = new NextRequest('http://localhost:3000/api/media/thumbnail?id=test-id')
       const response = await GET(request)
       
       expect(response.status).toBe(401)
@@ -102,7 +103,7 @@ describe('/api/media/thumbnail', () => {
     })
 
     it('should return 400 when media ID is missing', async () => {
-      const request = new Request('http://localhost:3000/api/media/thumbnail')
+      const request = new NextRequest('http://localhost:3000/api/media/thumbnail')
       const response = await GET(request)
       
       expect(response.status).toBe(400)
@@ -111,7 +112,7 @@ describe('/api/media/thumbnail', () => {
     })
 
     it('should return 400 for invalid size parameter', async () => {
-      const request = new Request('http://localhost:3000/api/media/thumbnail?id=test-id&size=invalid')
+      const request = new NextRequest('http://localhost:3000/api/media/thumbnail?id=test-id&size=invalid')
       const response = await GET(request)
       
       expect(response.status).toBe(400)
@@ -120,7 +121,7 @@ describe('/api/media/thumbnail', () => {
     })
 
     it('should return 400 for invalid format parameter', async () => {
-      const request = new Request('http://localhost:3000/api/media/thumbnail?id=test-id&format=invalid')
+      const request = new NextRequest('http://localhost:3000/api/media/thumbnail?id=test-id&format=invalid')
       const response = await GET(request)
       
       expect(response.status).toBe(400)
@@ -129,7 +130,7 @@ describe('/api/media/thumbnail', () => {
     })
 
     it('should return 400 for invalid quality parameter', async () => {
-      const request = new Request('http://localhost:3000/api/media/thumbnail?id=test-id&quality=150')
+      const request = new NextRequest('http://localhost:3000/api/media/thumbnail?id=test-id&quality=150')
       const response = await GET(request)
       
       expect(response.status).toBe(400)
@@ -149,7 +150,7 @@ describe('/api/media/thumbnail', () => {
         })
       })
 
-      const request = new Request('http://localhost:3000/api/media/thumbnail?id=nonexistent')
+      const request = new NextRequest('http://localhost:3000/api/media/thumbnail?id=nonexistent')
       const response = await GET(request)
       
       expect(response.status).toBe(404)
@@ -177,7 +178,7 @@ describe('/api/media/thumbnail', () => {
         })
       })
 
-      const request = new Request('http://localhost:3000/api/media/thumbnail?id=test-id')
+      const request = new NextRequest('http://localhost:3000/api/media/thumbnail?id=test-id')
       const response = await GET(request)
       
       expect(response.status).toBe(403)
@@ -202,7 +203,7 @@ describe('/api/media/thumbnail', () => {
         })
       })
 
-      const request = new Request('http://localhost:3000/api/media/thumbnail?id=test-id')
+      const request = new NextRequest('http://localhost:3000/api/media/thumbnail?id=test-id')
       const response = await GET(request)
       
       expect(response.status).toBe(400)
@@ -222,11 +223,11 @@ describe('/api/media/thumbnail', () => {
         })
       })
 
-      ;(thumbnailService.generateThumbnail as unknown).mockResolvedValue({
+      ;(thumbnailService.generateThumbnail as unknown as ReturnType<typeof vi.fn>).mockResolvedValue({
         url: 'https://example.com/thumbnail.webp'
       })
 
-      const request = new Request('http://localhost:3000/api/media/thumbnail?id=test-id&redirect=true')
+      const request = new NextRequest('http://localhost:3000/api/media/thumbnail?id=test-id&redirect=true')
       const response = await GET(request)
       
       expect(response.status).toBe(307) // Redirect status
@@ -246,7 +247,7 @@ describe('/api/media/thumbnail', () => {
         })
       })
 
-      ;(thumbnailService.generateThumbnail as unknown).mockResolvedValue({
+      ;(thumbnailService.generateThumbnail as unknown as ReturnType<typeof vi.fn>).mockResolvedValue({
         url: 'https://example.com/thumbnail.webp'
       })
 
@@ -257,7 +258,7 @@ describe('/api/media/thumbnail', () => {
         })
       })
 
-      const request = new Request('http://localhost:3000/api/media/thumbnail?id=test-id')
+      const request = new NextRequest('http://localhost:3000/api/media/thumbnail?id=test-id')
       const response = await GET(request)
       
       expect(response.status).toBe(200)
@@ -277,7 +278,7 @@ describe('/api/media/thumbnail', () => {
         })
       })
 
-      ;(thumbnailService.generateThumbnail as unknown).mockResolvedValue({
+      ;(thumbnailService.generateThumbnail as unknown as ReturnType<typeof vi.fn>).mockResolvedValue({
         url: 'https://example.com/thumbnail.webp'
       })
 
@@ -288,7 +289,7 @@ describe('/api/media/thumbnail', () => {
         })
       })
 
-      const request = new Request('http://localhost:3000/api/media/thumbnail?id=test-id')
+      const request = new NextRequest('http://localhost:3000/api/media/thumbnail?id=test-id')
       const response = await GET(request)
       
       expect(response.status).toBe(307) // Redirect to original
@@ -302,7 +303,7 @@ describe('/api/media/thumbnail', () => {
         isAuthenticated: false 
       })
 
-      const request = new Request('http://localhost:3000/api/media/thumbnail?id=test-id')
+      const request = new NextRequest('http://localhost:3000/api/media/thumbnail?id=test-id')
       const response = await HEAD(request)
       
       expect(response.status).toBe(401)
@@ -327,7 +328,7 @@ describe('/api/media/thumbnail', () => {
         })
       })
 
-      const request = new Request('http://localhost:3000/api/media/thumbnail?id=test-id')
+      const request = new NextRequest('http://localhost:3000/api/media/thumbnail?id=test-id')
       const response = await HEAD(request)
       
       expect(response.status).toBe(200)
@@ -353,7 +354,7 @@ describe('/api/media/thumbnail', () => {
         })
       })
 
-      const request = new Request('http://localhost:3000/api/media/thumbnail?id=test-id')
+      const request = new NextRequest('http://localhost:3000/api/media/thumbnail?id=test-id')
       const response = await HEAD(request)
       
       expect(response.status).toBe(404)
@@ -368,7 +369,7 @@ describe('/api/media/thumbnail', () => {
         isAuthenticated: false 
       })
 
-      const request = new Request('http://localhost:3000/api/media/thumbnail?id=test-id')
+      const request = new NextRequest('http://localhost:3000/api/media/thumbnail?id=test-id')
       const response = await DELETE(request)
       
       expect(response.status).toBe(401)
@@ -395,7 +396,7 @@ describe('/api/media/thumbnail', () => {
         })
       })
 
-      const request = new Request('http://localhost:3000/api/media/thumbnail?id=test-id&size=small')
+      const request = new NextRequest('http://localhost:3000/api/media/thumbnail?id=test-id&size=small')
       const response = await DELETE(request)
       
       expect(response.status).toBe(200)
@@ -416,9 +417,9 @@ describe('/api/media/thumbnail', () => {
         })
       })
 
-      ;(thumbnailService.cleanupThumbnails as unknown).mockResolvedValue(undefined)
+      ;(thumbnailService.cleanupThumbnails as unknown as ReturnType<typeof vi.fn>).mockResolvedValue(undefined)
 
-      const request = new Request('http://localhost:3000/api/media/thumbnail?id=test-id')
+      const request = new NextRequest('http://localhost:3000/api/media/thumbnail?id=test-id')
       const response = await DELETE(request)
       
       expect(response.status).toBe(200)

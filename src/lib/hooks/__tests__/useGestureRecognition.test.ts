@@ -44,7 +44,7 @@ describe('useGestureRecognition', () => {
   })
 
   it('should initialize with idle state', () => {
-    const { result: _ } = renderHook(() => // eslint-disable-line @typescript-eslint/no-unused-vars
+    const { result } = renderHook(() =>
       useGestureRecognition(mockElement, {}, mockOnGesture)
     )
 
@@ -60,8 +60,8 @@ describe('useGestureRecognition', () => {
 
     // Simulate touch start
     const touchEvent = createMockTouchEvent([{ clientX: 100, clientY: 100, identifier: 0 }])
-    const touchStartHandler = mockElement.addEventListener.mock.calls.find(
-      call => call[0] === 'touchstart'
+    const touchStartHandler = (mockElement.addEventListener as unknown as ReturnType<typeof vi.fn>).mock.calls.find(
+      (call: unknown[]) => call[0] === 'touchstart'
     )?.[1] as EventListener
 
     act(() => {
@@ -69,8 +69,8 @@ describe('useGestureRecognition', () => {
     })
 
     // Simulate touch end quickly (tap)
-    const touchEndHandler = mockElement.addEventListener.mock.calls.find(
-      call => call[0] === 'touchend'
+    const touchEndHandler = (mockElement.addEventListener as unknown as ReturnType<typeof vi.fn>).mock.calls.find(
+      (call: unknown[]) => call[0] === 'touchend'
     )?.[1] as EventListener
 
     act(() => {
@@ -91,8 +91,8 @@ describe('useGestureRecognition', () => {
     )
 
     const touchEvent = createMockTouchEvent([{ clientX: 100, clientY: 100, identifier: 0 }])
-    const touchStartHandler = mockElement.addEventListener.mock.calls.find(
-      call => call[0] === 'touchstart'
+    const touchStartHandler = (mockElement.addEventListener as unknown as ReturnType<typeof vi.fn>).mock.calls.find(
+      (call: unknown[]) => call[0] === 'touchstart'
     )?.[1] as EventListener
 
     // First tap
@@ -120,8 +120,8 @@ describe('useGestureRecognition', () => {
     )
 
     const touchEvent = createMockTouchEvent([{ clientX: 100, clientY: 100, identifier: 0 }])
-    const touchStartHandler = mockElement.addEventListener.mock.calls.find(
-      call => call[0] === 'touchstart'
+    const touchStartHandler = (mockElement.addEventListener as unknown as ReturnType<typeof vi.fn>).mock.calls.find(
+      (call: unknown[]) => call[0] === 'touchstart'
     )?.[1] as EventListener
 
     act(() => {
@@ -150,14 +150,14 @@ describe('useGestureRecognition', () => {
     const touchMoveEvent = createMockTouchEvent([{ clientX: 200, clientY: 100, identifier: 0 }])
     const touchEndEvent = createMockTouchEvent([{ clientX: 200, clientY: 100, identifier: 0 }])
 
-    const touchStartHandler = mockElement.addEventListener.mock.calls.find(
-      call => call[0] === 'touchstart'
+    const touchStartHandler = (mockElement.addEventListener as unknown as ReturnType<typeof vi.fn>).mock.calls.find(
+      (call: unknown[]) => call[0] === 'touchstart'
     )?.[1] as EventListener
-    const touchMoveHandler = mockElement.addEventListener.mock.calls.find(
-      call => call[0] === 'touchmove'
+    const touchMoveHandler = (mockElement.addEventListener as unknown as ReturnType<typeof vi.fn>).mock.calls.find(
+      (call: unknown[]) => call[0] === 'touchmove'
     )?.[1] as EventListener
-    const touchEndHandler = mockElement.addEventListener.mock.calls.find(
-      call => call[0] === 'touchend'
+    const touchEndHandler = (mockElement.addEventListener as unknown as ReturnType<typeof vi.fn>).mock.calls.find(
+      (call: unknown[]) => call[0] === 'touchend'
     )?.[1] as EventListener
 
     act(() => {
@@ -190,11 +190,11 @@ describe('useGestureRecognition', () => {
       { clientX: 200, clientY: 100, identifier: 1 }
     ])
 
-    const touchStartHandler = mockElement.addEventListener.mock.calls.find(
-      call => call[0] === 'touchstart'
+    const touchStartHandler = (mockElement.addEventListener as unknown as ReturnType<typeof vi.fn>).mock.calls.find(
+      (call: unknown[]) => call[0] === 'touchstart'
     )?.[1] as EventListener
-    const touchMoveHandler = mockElement.addEventListener.mock.calls.find(
-      call => call[0] === 'touchmove'
+    const touchMoveHandler = (mockElement.addEventListener as unknown as ReturnType<typeof vi.fn>).mock.calls.find(
+      (call: unknown[]) => call[0] === 'touchmove'
     )?.[1] as EventListener
 
     act(() => {
@@ -249,8 +249,8 @@ describe('useGestureRecognition', () => {
     )
 
     const touchEvent = createMockTouchEvent([{ clientX: 100, clientY: 100, identifier: 0 }])
-    const touchCancelHandler = mockElement.addEventListener.mock.calls.find(
-      call => call[0] === 'touchcancel'
+    const touchCancelHandler = (mockElement.addEventListener as unknown as ReturnType<typeof vi.fn>).mock.calls.find(
+      (call: unknown[]) => call[0] === 'touchcancel'
     )?.[1] as EventListener
 
     act(() => {
@@ -284,14 +284,14 @@ describe('useGestureRecognition', () => {
     const shortSwipeEvent = createMockTouchEvent([{ clientX: 130, clientY: 100, identifier: 0 }]) // Only 30px
     const touchEndEvent = createMockTouchEvent([{ clientX: 130, clientY: 100, identifier: 0 }])
 
-    const touchStartHandler = mockElement.addEventListener.mock.calls.find(
-      call => call[0] === 'touchstart'
+    const touchStartHandler = (mockElement.addEventListener as unknown as ReturnType<typeof vi.fn>).mock.calls.find(
+      (call: unknown[]) => call[0] === 'touchstart'
     )?.[1] as EventListener
-    const touchMoveHandler = mockElement.addEventListener.mock.calls.find(
-      call => call[0] === 'touchmove'
+    const touchMoveHandler = (mockElement.addEventListener as unknown as ReturnType<typeof vi.fn>).mock.calls.find(
+      (call: unknown[]) => call[0] === 'touchmove'
     )?.[1] as EventListener
-    const touchEndHandler = mockElement.addEventListener.mock.calls.find(
-      call => call[0] === 'touchend'
+    const touchEndHandler = (mockElement.addEventListener as unknown as ReturnType<typeof vi.fn>).mock.calls.find(
+      (call: unknown[]) => call[0] === 'touchend'
     )?.[1] as EventListener
 
     act(() => {
